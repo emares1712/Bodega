@@ -42,10 +42,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Menu");
+        jMenu1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
 
+        jmi_clientes.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_clientes.setText("Clientes");
         jMenu1.add(jmi_clientes);
 
+        jmi_compras.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_compras.setText("Compras");
         jmi_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,18 +57,23 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jmi_compras);
 
+        jmi_detalleCompras.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_detalleCompras.setText("Detalle de Compras");
         jMenu1.add(jmi_detalleCompras);
 
+        jmi_detalleVentas.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_detalleVentas.setText("Detalle de Venta");
         jMenu1.add(jmi_detalleVentas);
 
+        jmi_empleados.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_empleados.setText("Empleados");
         jMenu1.add(jmi_empleados);
 
+        jmi_productos.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_productos.setText("Productos");
         jMenu1.add(jmi_productos);
 
+        jmi_proveedores.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_proveedores.setText("Proveedores");
         jMenu1.add(jmi_proveedores);
 
@@ -83,11 +91,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGap(0, 469, Short.MAX_VALUE)
         );
 
         pack();
