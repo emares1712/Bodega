@@ -32,7 +32,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jmi_clientes = new javax.swing.JMenuItem();
         jmi_compras = new javax.swing.JMenuItem();
         jmi_detalleCompras = new javax.swing.JMenuItem();
-        jmi_detalleVenta = new javax.swing.JMenuItem();
+        jmi_detalleVentas = new javax.swing.JMenuItem();
         jmi_empleados = new javax.swing.JMenuItem();
         jmi_productos = new javax.swing.JMenuItem();
         jmi_proveedores = new javax.swing.JMenuItem();
@@ -57,8 +57,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jmi_detalleCompras.setText("Detalle de Compras");
         jMenu1.add(jmi_detalleCompras);
 
-        jmi_detalleVenta.setText("Detalle de Venta");
-        jMenu1.add(jmi_detalleVenta);
+        jmi_detalleVentas.setText("Detalle de Venta");
+        jMenu1.add(jmi_detalleVentas);
 
         jmi_empleados.setText("Empleados");
         jMenu1.add(jmi_empleados);
@@ -139,7 +139,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmi_clientes;
     public javax.swing.JMenuItem jmi_compras;
     public javax.swing.JMenuItem jmi_detalleCompras;
-    public javax.swing.JMenuItem jmi_detalleVenta;
+    public javax.swing.JMenuItem jmi_detalleVentas;
     public javax.swing.JMenuItem jmi_empleados;
     public javax.swing.JMenuItem jmi_productos;
     public javax.swing.JMenuItem jmi_proveedores;
