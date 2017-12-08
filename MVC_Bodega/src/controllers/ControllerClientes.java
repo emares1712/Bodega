@@ -18,7 +18,7 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
     public void initView(){
         Agregar();
         mClientes.ConsultarClientes();
-        mClientes.MoverPrimero();
+        //mClientes.MoverPrimero();
         mClientes.AsignarCliente();
         obtenerValor();
         vClientes.jtf_id_cliente.setEnabled(false);

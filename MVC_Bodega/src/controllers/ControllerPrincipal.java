@@ -28,7 +28,7 @@ public class ControllerPrincipal {
         Agregar_Menu();
     }
     public void Agregar_Menu(){
-        vPrincipal.jmi_clientes.addActionListener(e ->jmi_clientes_click());
+        vPrincipal.jmi_clientes.addActionListener(e->jmi_clientes_click());
     }
     public void jmi_clientes_click(){
         vPrincipal.setContentPane(vClientes);

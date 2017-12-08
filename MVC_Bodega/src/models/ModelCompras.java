@@ -37,7 +37,7 @@ public class ModelCompras{
     private void Connect(){
         try{
             sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
-            sql_st = sql_connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sql_st = sql_connection.createStatement();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 101: No hay conexión con la base de datos: " + e);
         }
@@ -48,7 +48,7 @@ public class ModelCompras{
             sql = "SELECT * FROM Clientes ORDER BY ClienteID ASC";
             sql_rs = sql_st.executeQuery(sql);
             sql_rs.first();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 102: Consulta tabla Personas: " + e);
         }
