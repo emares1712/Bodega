@@ -91,7 +91,7 @@ public class ModelCompras{
            sql_ps.setString(3, estado);
            sql_ps.setString(4, telefono);
            sql_ps.setString(5, whatsapp);
-           sql_ps.setInt(6, Integer.parseInt(idCliente));
+           sql_ps.setInt(6, Integer.parseInt(idCompra));
            sql_ps.executeUpdate();
            sql_connection.close();
         }catch(SQLException e){
@@ -103,7 +103,7 @@ public class ModelCompras{
         try{
             Connect();
             sql = "DELETE FROM Cliente Where ClienteID = (?);";
-            sql_ps.setInt(1, Integer.parseInt(idCliente));
+            sql_ps.setInt(1, Integer.parseInt(idCompra));
             sql_ps.executeUpdate();
             sql_connection.close();
         }catch(SQLException e){
@@ -112,7 +112,7 @@ public class ModelCompras{
     }
     
     public String getIdCliente() {
-        return idCliente;
+        return idCompra;
     }
 
     public String getNombreCliente() {
@@ -136,7 +136,7 @@ public class ModelCompras{
     }
 
     public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+        this.idCompra = idCliente;
     }
 
     public void setNombreCliente(String nombreCliente) {

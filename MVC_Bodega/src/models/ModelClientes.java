@@ -21,7 +21,6 @@ public class ModelClientes {
     private PreparedStatement sql_ps;
     private ResultSet sql_rs;
     private String sql;
-    private ModelPrincipal modelPrincipal;
     private String idCliente;
     private String nombreCliente;
     private String estado;
@@ -29,13 +28,9 @@ public class ModelClientes {
     private String telefono;
     private String whatsapp;
     
-    public ModelClientes(ModelPrincipal modelPrincipal){
-        this.modelPrincipal = modelPrincipal;
-    }
     private void Connect(){
         try{
             sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
-            sql_st = sql_connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 101: No hay conexión con la base de datos: " + e);
         }

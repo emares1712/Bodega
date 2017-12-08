@@ -20,7 +20,7 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
         mClientes.ConsultarClientes();
         mClientes.MoverPrimero();
         mClientes.AsignarCliente();
-        getValor();
+        obtenerValor();
         vClientes.jtf_id_cliente.setEnabled(false);
     }
     public void Agregar(){
@@ -33,7 +33,7 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
         vClientes.jb_siguiente.addActionListener(e->jbtn_siguiente_Click());
         vClientes.jb_ultimo.addActionListener(e->jbtn_ultimo_Click());
     }
-    public void getValor(){
+    public void obtenerValor(){
         vClientes.jtf_id_cliente.setText(mClientes.getIdCliente());
         vClientes.jtf_nombre.setText(mClientes.getNombreCliente());
         vClientes.jtf_ciudad.setText(mClientes.getCiudad());
@@ -41,7 +41,7 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
         vClientes.jtf_telefono.setText(mClientes.getTelefono());
         vClientes.jtf_whatsapp.setText(mClientes.getWhatsapp());
     }
-    public void setValor(){
+    public void editarValor(){
         mClientes.setIdCliente((vClientes.jtf_id_cliente.getText()));
         mClientes.setNombreCliente((vClientes.jtf_nombre.getText()));
         mClientes.setCiudad((vClientes.jtf_ciudad.getText()));
@@ -59,18 +59,18 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
     }
     public void jbtn_anterior_Click(){
         mClientes.MoverAnterior();
-        getValor();
+        obtenerValor();
     }
     public void jbtn_eliminar_Click(){
-        setValor();
+        editarValor();
         mClientes.EliminarCliente();
     }
     public void jbtn_guardar_Click(){
-        setValor();
+        editarValor();
         mClientes.ModificarCliente();
     }
     public void jbtn_modificar_Click(){
-        setValor();
+        editarValor();
         mClientes.ModificarCliente();
     }
     public void jbtn_nuevo_Click(){
@@ -79,14 +79,14 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
     }
     public void jbtn_primero_Click(){
         mClientes.MoverPrimero();
-        getValor();
+        obtenerValor();
     }
     public void jbtn_siguiente_Click(){
         mClientes.MoverSiguiente();
-        getValor();
+        obtenerValor();
     }
     public void jbtn_ultimo_Click(){
         mClientes.MoverUltimo();
-        getValor();
+        obtenerValor();
     }
 }

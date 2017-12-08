@@ -12,7 +12,7 @@ import controllers.*;
  * @author ninte
  */
 public class Main {
-    public void main(String ej[]){
+    public static void main(String ej[]){
         ModelPrincipal mPrincipal = new ModelPrincipal();
         ModelClientes mClientes = new ModelClientes();
         
@@ -21,7 +21,7 @@ public class Main {
         
         Object models[] = new Object[9];
         Object views[] = new Object[9];
-        Object controllers = new Object [9];
+        Object controllers[] = new Object [9];
         
         models[0] = mPrincipal;
         models[1] = mClientes;
