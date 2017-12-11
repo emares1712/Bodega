@@ -31,13 +31,10 @@ public class ModelEmpleados {
     private String telefono;
 
     
-    public ModelEmpleados(ModelPrincipal modelPrincipal){
-        this.modelPrincipal = modelPrincipal;
-    }
     private void Connect(){
         try{
             sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
-            sql_st = sql_connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            sql_st = sql_connection.createStatement();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 107: No hay conexión con la base de datos: " + e);
         }
@@ -48,14 +45,14 @@ public class ModelEmpleados {
             sql = "SELECT * FROM Empleado ORDER BY EmpleadoID ASC";
             sql_rs = sql_st.executeQuery(sql);
             sql_rs.first();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 108: Consulta tabla Empleado: " + e);
         }
     }
     public void AsignarEmpleado(){
         try{
-            idEmpleado = sql_rs.getString("EmleadoID");
+            idEmpleado = sql_rs.getString("EmpleadoID");
             nombreEmpleado = sql_rs.getString("Nombre_Empleado");
             colonia = sql_rs.getString("Colonia");
             calle = sql_rs.getString("Calle");
@@ -74,12 +71,12 @@ public class ModelEmpleados {
             sql_ps.setString(3, calle);
             sql_ps.setString(4, telefono);
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 110: Insertando nuevo cliente: " + e);
         }
     }
-    public void ModificarCliente(){
+    public void ModificarEmpleado(){
         try{
             Connect();
             sql = "Update Empleado Set Nombre_Empleado = (?), Colonia (?), Calle (?), Telefono (?) Where EmpleadoID = (?);";
@@ -90,19 +87,19 @@ public class ModelEmpleados {
            sql_ps.setString(4, telefono);
            sql_ps.setInt(6, Integer.parseInt(idEmpleado));
            sql_ps.executeUpdate();
-           sql_connection.close();
+           //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 111: Modificar Empleado: " + e);
         }
     }
 
-    public void EliminarCliente(){
+    public void EliminarEmpleado(){
         try{
             Connect();
             sql = "DELETE FROM Empleado Where EmpleadoID = (?);";
             sql_ps.setInt(1, Integer.parseInt(idEmpleado));
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 112: Eliminar Empleado: " + e);
         }

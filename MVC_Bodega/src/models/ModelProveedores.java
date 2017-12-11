@@ -32,9 +32,6 @@ public class ModelProveedores {
     private String telefono;
     private String whatsapp;
     
-    public ModelProveedores(ModelPrincipal modelPrincipal){
-        this.modelPrincipal = modelPrincipal;
-    }
     private void Connect(){
         try{
             sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
@@ -46,17 +43,17 @@ public class ModelProveedores {
     public void ConsultarProveedor(){
         try{
             Connect();
-            sql = "SELECT * FROM Proveedores ORDER BY ProveedorID ASC";
+            sql = "SELECT * FROM Proveedores ORDER BY ProveedoresID ASC";
             sql_rs = sql_st.executeQuery(sql);
             sql_rs.first();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 114: Consulta tabla Proveedor: " + e);
         }
     }
     public void AsignarProveedor(){
         try{
-            idProveedor = sql_rs.getString("ProveedorID");
+            idProveedor = sql_rs.getString("ProveedoresID");
             nombreProveedor = sql_rs.getString("Nombre_Proveedor");
             ciudad = sql_rs.getString("Ciudad");
             colonia = sql_rs.getString("Colonia");
@@ -70,7 +67,7 @@ public class ModelProveedores {
     public void InsertarProveedor(){
         try{
             Connect();
-            sql = "Insert into Proveedores (ProveedorID, Nombre_Proveedor, Ciudad, Colonia, Calle, Telefono, Whatsapp)Values (?,?,?,?,?,?,?);";
+            sql = "Insert into Proveedores (ProveedoresID, Nombre_Proveedor, Ciudad, Colonia, Calle, Telefono, Whatsapp)Values (?,?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
             sql_ps.setString(1, nombreProveedor);
             sql_ps.setString(2, ciudad);
@@ -79,7 +76,7 @@ public class ModelProveedores {
             sql_ps.setString(5, telefono);
             sql_ps.setString(6, whatsapp);
             sql_ps.executeUpdate();
-            sql_connection.close();
+           // sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 116: Insertando nuevo proveedor: " + e);
         }
@@ -87,7 +84,7 @@ public class ModelProveedores {
     public void ModificarProveedor(){
         try{
             Connect();
-            sql = "Update Proveedor Set Nombre_Proveedor = (?), Ciudad (?), Colonia (?), Calle (?), Telefono (?), Whatsapp (?) Where ProveedorID = (?);";
+            sql = "Update Proveedor Set Nombre_Proveedor = (?), Ciudad (?), Colonia (?), Calle (?), Telefono (?), Whatsapp (?) Where ProveedoresID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreProveedor);
            sql_ps.setString(2, ciudad);
@@ -97,7 +94,7 @@ public class ModelProveedores {
            sql_ps.setString(6, whatsapp);
            sql_ps.setInt(7, Integer.parseInt(idProveedor));
            sql_ps.executeUpdate();
-           sql_connection.close();
+           //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 117: Modificar proveedor: " + e);
         }
@@ -106,10 +103,10 @@ public class ModelProveedores {
     public void EliminarProveedor(){
         try{
             Connect();
-            sql = "DELETE FROM Proveedor Where ProveedorID = (?);";
+            sql = "DELETE FROM Proveedor Where ProveedoresID = (?);";
             sql_ps.setInt(1, Integer.parseInt(idProveedor));
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 118: Eliminar Proveedor: " + e);
         }

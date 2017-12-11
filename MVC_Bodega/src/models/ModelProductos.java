@@ -31,9 +31,6 @@ public class ModelProductos {
     private String precioCompra;
     private String precioVenta;
     
-    public ModelProductos(ModelPrincipal modelPrincipal){
-        this.modelPrincipal = modelPrincipal;
-    }
     private void Connect(){
         try{
             sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
@@ -45,20 +42,20 @@ public class ModelProductos {
     public void ConsultarProducto(){
         try{
             Connect();
-            sql = "SELECT * FROM Productos ORDER BY ProductoID ASC";
+            sql = "SELECT * FROM Productos ORDER BY ProductosID ASC";
             sql_rs = sql_st.executeQuery(sql);
             sql_rs.first();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 120: Consulta tabla Productos: " + e);
         }
     }
     public void AsignarProducto(){
         try{
-            idProducto = sql_rs.getString("ProveedorID");
-            nombreProducto = sql_rs.getString("Nombre_Proveedor");
+            idProducto = sql_rs.getString("ProductosID");
+            nombreProducto = sql_rs.getString("Nombre_Producto");
             descripcion = sql_rs.getString("Descripcion");
-            cantidadExistencias = sql_rs.getString("Cantidad_Existentes");
+            cantidadExistencias = sql_rs.getString("Cantidad_Existente");
             precioCompra = sql_rs.getString("Precio_Compra");
             precioVenta = sql_rs.getString("Precio_Venta");
             
@@ -69,7 +66,7 @@ public class ModelProductos {
     public void InsertarProducto(){
         try{
             Connect();
-            sql = "Insert into Productos (ProductoID, Nombre_Producto, Descripcion, Cantidad_Existencias, Precio_Compra, Precio_Venta)Values (?,?,?,?,?,?);";
+            sql = "Insert into Productos (ProductosID, Nombre_Producto, Descripcion, Cantidad_Existente, Precio_Compra, Precio_Venta)Values (?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
             sql_ps.setString(1, nombreProducto);
             sql_ps.setString(2, descripcion);
@@ -77,7 +74,7 @@ public class ModelProductos {
             sql_ps.setString(4, precioCompra);
             sql_ps.setString(5, precioVenta);
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 122: Insertando nuevo producto: " + e);
         }
@@ -85,7 +82,7 @@ public class ModelProductos {
     public void ModificarProducto(){
         try{
             Connect();
-            sql = "Update Productos Set Nombre_Producto = (?), Descripcion (?), Cantidad_Existencias (?), Precio_Compra (?), Precio_Venta (?) Where ProductoID = (?);";
+            sql = "Update Productos Set Nombre_Producto = (?), Descripcion (?), Cantidad_Existente (?), Precio_Compra (?), Precio_Venta (?) Where ProductosID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreProducto);
            sql_ps.setString(2, descripcion);
@@ -94,7 +91,7 @@ public class ModelProductos {
            sql_ps.setString(5, precioVenta);
            sql_ps.setInt(6, Integer.parseInt(idProducto));
            sql_ps.executeUpdate();
-           sql_connection.close();
+           //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 123: Modificar producto: " + e);
         }
@@ -106,7 +103,7 @@ public class ModelProductos {
             sql = "DELETE FROM Productos Where ProductosID = (?);";
             sql_ps.setInt(1, Integer.parseInt(idProducto));
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 124: Eliminar producto: " + e);
         }
@@ -156,7 +153,9 @@ public class ModelProductos {
             JOptionPane.showMessageDialog(null, "Error 212: Mover al primer registro: " + e);
         }
     }
-    
+    public String getIdProducto() {
+        return idProducto;
+    }
     public String getNombreProducto() {
         return nombreProducto;
     }

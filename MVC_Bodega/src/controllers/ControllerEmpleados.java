@@ -1,14 +1,88 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
-
+import models.ModelEmpleados;
+import views.ViewEmpleados;
 /**
  *
  * @author ninte
  */
 public class ControllerEmpleados {
+    private ModelEmpleados mEmpleados;
+    private ViewEmpleados vEmpleados;
     
+public ControllerEmpleados(Object models[], Object views[], Object controllers[]){
+        this.mEmpleados = (ModelEmpleados)models[2];
+        this.vEmpleados = (ViewEmpleados)views[2];
+        initView();
+    }
+    public void initView(){
+        Agregar();
+        mEmpleados.ConsultarEmpleado();
+        //mClientes.MoverPrimero();
+        mEmpleados.AsignarEmpleado();
+        obtenerValor();
+        vEmpleados.jtf_id.setEnabled(false);
+    }
+    public void Agregar(){
+        vEmpleados.jb_anterior.addActionListener(e->jbtn_anterior_Click());
+        vEmpleados.jb_eliminar.addActionListener(e->jbtn_eliminar_Click());
+        vEmpleados.jb_guardar.addActionListener(e->jbtn_guardar_Click());
+        vEmpleados.jb_modificar.addActionListener(e->jbtn_modificar_Click());
+        vEmpleados.jb_nuevo.addActionListener(e->jbtn_nuevo_Click());
+        vEmpleados.jb_primero.addActionListener(e->jbtn_primero_Click());
+        vEmpleados.jb_siguiente.addActionListener(e->jbtn_siguiente_Click());
+        vEmpleados.jb_ultimo.addActionListener(e->jbtn_ultimo_Click());
+    }
+    public void obtenerValor(){
+        vEmpleados.jtf_id.setText(mEmpleados.getIdEmpleado());
+        vEmpleados.jtf_nombre.setText(mEmpleados.getNombreEmpleado());
+        vEmpleados.jtf_colonia.setText(mEmpleados.getColonia());
+        vEmpleados.jtf_calle.setText(mEmpleados.getCalle());
+        vEmpleados.jtf_telefono.setText(mEmpleados.getTelefono());
+    }
+    public void editarValor(){
+        mEmpleados.setIdEmpleado((vEmpleados.jtf_id.getText()));
+        mEmpleados.setNombreEmpleado((vEmpleados.jtf_nombre.getText()));
+        mEmpleados.setColonia((vEmpleados.jtf_colonia.getText()));
+        mEmpleados.setCalle((vEmpleados.jtf_calle.getText()));
+        mEmpleados.setTelefono((vEmpleados.jtf_telefono.getText()));
+    }
+    public void NuevoEmpleado(){
+        vEmpleados.jtf_id.setText("");
+        vEmpleados.jtf_nombre.setText("");
+        vEmpleados.jtf_colonia.setText("");
+        vEmpleados.jtf_calle.setText("");
+        vEmpleados.jtf_telefono.setText("");
+    }
+    public void jbtn_anterior_Click(){
+        mEmpleados.MoverAnterior();
+        obtenerValor();
+    }
+    public void jbtn_eliminar_Click(){
+        editarValor();
+        mEmpleados.EliminarEmpleado();
+    }
+    public void jbtn_guardar_Click(){
+        editarValor();
+        mEmpleados.ModificarEmpleado();
+    }
+    public void jbtn_modificar_Click(){
+        editarValor();
+        mEmpleados.ModificarEmpleado();
+    }
+    public void jbtn_nuevo_Click(){
+        NuevoEmpleado();
+        mEmpleados.ConsultarEmpleado();
+    }
+    public void jbtn_primero_Click(){
+        mEmpleados.MoverPrimero();
+        obtenerValor();
+    }
+    public void jbtn_siguiente_Click(){
+        mEmpleados.MoverSiguiente();
+        obtenerValor();
+    }
+    public void jbtn_ultimo_Click(){
+        mEmpleados.MoverUltimo();
+        obtenerValor();
+    }
 }
