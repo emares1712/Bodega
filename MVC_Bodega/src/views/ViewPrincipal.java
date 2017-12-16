@@ -28,7 +28,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jm_login = new javax.swing.JMenu();
+        jmi_inicio = new javax.swing.JMenuItem();
+        jm_menu = new javax.swing.JMenu();
         jmi_clientes = new javax.swing.JMenuItem();
         jmi_compras = new javax.swing.JMenuItem();
         jmi_detalleCompras = new javax.swing.JMenuItem();
@@ -37,16 +39,22 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jmi_productos = new javax.swing.JMenuItem();
         jmi_proveedores = new javax.swing.JMenuItem();
         jmi_ventas = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Menu");
-        jMenu1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jm_login.setText("Login");
+
+        jmi_inicio.setText("Inicio de sesion");
+        jm_login.add(jmi_inicio);
+
+        jMenuBar1.add(jm_login);
+
+        jm_menu.setText("Menu");
+        jm_menu.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
 
         jmi_clientes.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_clientes.setText("Clientes");
-        jMenu1.add(jmi_clientes);
+        jm_menu.add(jmi_clientes);
 
         jmi_compras.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_compras.setText("Compras");
@@ -55,35 +63,32 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 jmi_comprasActionPerformed(evt);
             }
         });
-        jMenu1.add(jmi_compras);
+        jm_menu.add(jmi_compras);
 
         jmi_detalleCompras.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_detalleCompras.setText("Detalle de Compras");
-        jMenu1.add(jmi_detalleCompras);
+        jm_menu.add(jmi_detalleCompras);
 
         jmi_detalleVentas.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_detalleVentas.setText("Detalle de Venta");
-        jMenu1.add(jmi_detalleVentas);
+        jm_menu.add(jmi_detalleVentas);
 
         jmi_empleados.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_empleados.setText("Empleados");
-        jMenu1.add(jmi_empleados);
+        jm_menu.add(jmi_empleados);
 
         jmi_productos.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_productos.setText("Productos");
-        jMenu1.add(jmi_productos);
+        jm_menu.add(jmi_productos);
 
         jmi_proveedores.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jmi_proveedores.setText("Proveedores");
-        jMenu1.add(jmi_proveedores);
+        jm_menu.add(jmi_proveedores);
 
         jmi_ventas.setText("Ventas");
-        jMenu1.add(jmi_ventas);
+        jm_menu.add(jmi_ventas);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jm_menu);
 
         setJMenuBar(jMenuBar1);
 
@@ -141,14 +146,15 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    public javax.swing.JMenu jm_login;
+    public javax.swing.JMenu jm_menu;
     public javax.swing.JMenuItem jmi_clientes;
     public javax.swing.JMenuItem jmi_compras;
     public javax.swing.JMenuItem jmi_detalleCompras;
     public javax.swing.JMenuItem jmi_detalleVentas;
     public javax.swing.JMenuItem jmi_empleados;
+    public javax.swing.JMenuItem jmi_inicio;
     public javax.swing.JMenuItem jmi_productos;
     public javax.swing.JMenuItem jmi_proveedores;
     public javax.swing.JMenuItem jmi_ventas;

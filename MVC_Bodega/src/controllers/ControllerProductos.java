@@ -10,8 +10,8 @@ public class ControllerProductos {
     private ViewProductos vProductos;
     
 public ControllerProductos(Object models[], Object views[], Object controllers[]){
-        this.mProductos = (ModelProductos)models[3];
-        this.vProductos = (ViewProductos)views[3];
+        this.mProductos = (ModelProductos)models[4];
+        this.vProductos = (ViewProductos)views[4];
         initView();
     }
     public void initView(){

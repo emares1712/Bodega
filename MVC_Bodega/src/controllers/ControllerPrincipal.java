@@ -6,6 +6,7 @@
 package controllers;
 import models.ModelPrincipal;
 import views.*;
+import models.*;
 /**
  *
  * @author ninte
@@ -13,26 +14,64 @@ import views.*;
 public class ControllerPrincipal {
     private ModelPrincipal mPrincipal;
     private ViewPrincipal vPrincipal;
+    private ViewLogin vLogin;
+    private ModelLogin mLogin;
+    private ControllerLogin cLogin;
     private ViewClientes vClientes;
+    private ModelClientes mClientes;
+    private ControllerClientes cClientes;
     private ViewEmpleados vEmpleados;
+    private ModelEmpleados mEmpleados;
+    private ControllerEmpleados cEmpleados;
     private ViewProductos vProductos;
+    private ModelProductos mProductos;
+    private ControllerProductos cProductos;
     private ViewProveedores vProveedores;
+    private ModelProveedores mProveedores;
+    private ControllerProveedores cProveedores;
     private ViewCompras vCompras;
+    private ModelCompras mCompras;
+    private ControllerCompras cCompras;
     private ViewVentas vVentas;
+    private ModelVentas mVentas;
+    private ControllerVentas cVentas;
     private ViewDetalleVentas vDetalleVentas;
+    private ModelDetalleVentas mDetalleVentas;
+    private ControllerDetalleVentas cDetalleVentas;
     private ViewDetalleCompras vDetalleCompras;
+    private ModelDetalleCompras mDetalleCompras;
+    private ControllerDetalleCompras cDetalleCompras;
     
     public ControllerPrincipal(Object models[], Object views[], Object controllers[]){
         this.mPrincipal = (ModelPrincipal)models[0];
         this.vPrincipal = (ViewPrincipal)views[0];
-        this.vClientes = (ViewClientes)views[1];
-        this.vEmpleados = (ViewEmpleados)views[2];
-        this.vProductos = (ViewProductos)views[3];
-        this.vProveedores = (ViewProveedores)views[4];
-        this.vCompras = (ViewCompras)views[5];
-        this.vVentas = (ViewVentas)views[6];
-        this.vDetalleCompras = (ViewDetalleCompras)views[7];
-        this.vDetalleVentas = (ViewDetalleVentas)views[8];
+        this.vLogin = (ViewLogin)views[1];
+        this.mLogin = (ModelLogin)models[1];
+        this.cLogin = (ControllerLogin)controllers[1];
+        this.vClientes = (ViewClientes)views[2];
+        this.mClientes = (ModelClientes)models[2];
+        this.cClientes = (ControllerClientes)controllers[2];
+        this.vEmpleados = (ViewEmpleados)views[3];
+        this.mEmpleados = (ModelEmpleados)models[3];
+        this.cEmpleados = (ControllerEmpleados)controllers[3];
+        this.vProductos = (ViewProductos)views[4];
+        this.mProductos = (ModelProductos)models[4];
+        this.cProductos = (ControllerProductos)controllers[4];
+        this.vProveedores = (ViewProveedores)views[5];
+        this.mProveedores = (ModelProveedores)models[5];
+        this.cProveedores = (ControllerProveedores)controllers[5];
+        this.vCompras = (ViewCompras)views[6];
+        this.mCompras = (ModelCompras)models[6];
+        this.cCompras = (ControllerCompras)controllers[6];
+        this.vVentas = (ViewVentas)views[7];
+        this.mVentas = (ModelVentas)models[7];
+        this.cVentas = (ControllerVentas)controllers[7];
+        this.vDetalleCompras = (ViewDetalleCompras)views[8];
+        this.mDetalleCompras = (ModelDetalleCompras)models[8];
+        this.cDetalleCompras = (ControllerDetalleCompras)controllers[8];
+        this.vDetalleVentas = (ViewDetalleVentas)views[9];
+        this.mDetalleVentas = (ModelDetalleVentas)models[9];
+        this.cDetalleVentas = (ControllerDetalleVentas)controllers[9];
         initView();
     }
     public void initView(){
@@ -42,6 +81,16 @@ public class ControllerPrincipal {
         Agregar_Menu();
     }
     public void Agregar_Menu(){
+        vPrincipal.jm_menu.setVisible(false);
+        vPrincipal.jmi_clientes.setVisible(false);
+        vPrincipal.jmi_compras.setVisible(false);
+        vPrincipal.jmi_detalleCompras.setVisible(false);
+        vPrincipal.jmi_detalleVentas.setVisible(false);
+        vPrincipal.jmi_empleados.setVisible(false);
+        vPrincipal.jmi_productos.setVisible(false);
+        vPrincipal.jmi_proveedores.setVisible(false);
+        vPrincipal.jmi_ventas.setVisible(false);
+        vPrincipal.jmi_inicio.addActionListener(e->jmi_inicio_click());
         vPrincipal.jmi_clientes.addActionListener(e->jmi_clientes_click());
         vPrincipal.jmi_empleados.addActionListener(e->jmi_empleados_click());
         vPrincipal.jmi_productos.addActionListener(e->jmi_productos_click());
@@ -50,6 +99,11 @@ public class ControllerPrincipal {
         vPrincipal.jmi_ventas.addActionListener(e->jmi_ventas_click());
         vPrincipal.jmi_detalleCompras.addActionListener(e->jmi_detalleCompras_click());
         vPrincipal.jmi_detalleVentas.addActionListener(e->jmi_detalleVentas_click());
+    }
+    public void jmi_inicio_click(){
+        vPrincipal.setContentPane(vLogin);
+        vPrincipal.revalidate();
+        vPrincipal.repaint();
     }
     public void jmi_clientes_click(){
         vPrincipal.setContentPane(vClientes);

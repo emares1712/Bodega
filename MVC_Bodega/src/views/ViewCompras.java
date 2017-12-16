@@ -34,23 +34,19 @@ public class ViewCompras extends javax.swing.JPanel {
         jtf_buscar = new javax.swing.JTextField();
         jtf_total = new javax.swing.JTextField();
         jb_siguiente = new javax.swing.JButton();
-        jl_detalle = new javax.swing.JLabel();
         jb_ultimo = new javax.swing.JButton();
-        jtf_detalle = new javax.swing.JTextField();
         jb_nuevo = new javax.swing.JButton();
         jl_fecha = new javax.swing.JLabel();
         jb_modificar = new javax.swing.JButton();
         jtf_fecha = new javax.swing.JTextField();
         jb_guardar = new javax.swing.JButton();
-        jl_cantidad = new javax.swing.JLabel();
         jb_eliminar = new javax.swing.JButton();
-        jl_precio = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_detalle_compra = new javax.swing.JTable();
-        jtf_cantidad = new javax.swing.JTextField();
         jl_compra_id = new javax.swing.JLabel();
-        jtf_precio = new javax.swing.JTextField();
         jtf_compra = new javax.swing.JTextField();
+        jl_proveedor = new javax.swing.JLabel();
+        jtf_proveedor = new javax.swing.JTextField();
 
         jb_primero.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_primero.setText("|<");
@@ -73,9 +69,6 @@ public class ViewCompras extends javax.swing.JPanel {
         jb_siguiente.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_siguiente.setText(">>");
 
-        jl_detalle.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jl_detalle.setText("Detalle de compra");
-
         jb_ultimo.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_ultimo.setText(">|");
 
@@ -91,14 +84,8 @@ public class ViewCompras extends javax.swing.JPanel {
         jb_guardar.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_guardar.setText("Guardar");
 
-        jl_cantidad.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jl_cantidad.setText("Cantidad");
-
         jb_eliminar.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_eliminar.setText("Eliminar");
-
-        jl_precio.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jl_precio.setText("Precio Unitario");
 
         jt_detalle_compra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,79 +103,66 @@ public class ViewCompras extends javax.swing.JPanel {
         jl_compra_id.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jl_compra_id.setText("Clave de la Compra");
 
+        jl_proveedor.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jl_proveedor.setText("Proveedor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jl_precio)
-                                .addComponent(jl_total))
-                            .addComponent(jl_fecha, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtf_total, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtf_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60))
+                                    .addComponent(jl_compra_id)
+                                    .addComponent(jl_proveedor))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtf_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtf_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jl_fecha)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtf_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jl_total)
+                                        .addGap(68, 68, 68)
+                                        .addComponent(jtf_total, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtf_fecha)
-                                .addContainerGap())))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                                .addGap(93, 93, 93)
+                                .addComponent(jb_nuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_modificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jb_guardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jb_eliminar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(jb_primero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_anterior)
+                                .addGap(36, 36, 36)
+                                .addComponent(jb_siguiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jb_ultimo)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jl_compra_id)
-                                .addComponent(jl_cantidad)
-                                .addComponent(jl_detalle))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtf_detalle)
-                                    .addGap(297, 297, 297))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtf_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jtf_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addContainerGap(315, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 110, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jl_buscar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(144, 144, 144))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jb_nuevo)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jb_modificar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jb_guardar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jb_eliminar))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(25, 25, 25)
-                                            .addComponent(jb_primero)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jb_anterior)
-                                            .addGap(36, 36, 36)
-                                            .addComponent(jb_siguiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jb_ultimo)))
-                                    .addGap(82, 82, 82)))))))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(197, Short.MAX_VALUE)
+                    .addComponent(jl_buscar)
+                    .addGap(18, 18, 18)
+                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(144, 144, 144)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,16 +170,28 @@ public class ViewCompras extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_fecha)
-                    .addComponent(jtf_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jl_precio)
-                    .addComponent(jtf_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jtf_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_compra_id)
+                    .addComponent(jtf_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_total)
-                    .addComponent(jtf_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(jtf_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_proveedor)
+                    .addComponent(jtf_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_primero)
+                    .addComponent(jb_anterior)
+                    .addComponent(jb_siguiente)
+                    .addComponent(jb_ultimo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_nuevo)
+                    .addComponent(jb_modificar)
+                    .addComponent(jb_guardar)
+                    .addComponent(jb_eliminar))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,31 +200,7 @@ public class ViewCompras extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jl_buscar)
                         .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(23, 23, 23)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jl_detalle)
-                        .addComponent(jtf_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jl_compra_id)
-                        .addComponent(jtf_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtf_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jl_cantidad))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jb_primero)
-                        .addComponent(jb_anterior)
-                        .addComponent(jb_siguiente)
-                        .addComponent(jb_ultimo))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jb_nuevo)
-                        .addComponent(jb_modificar)
-                        .addComponent(jb_guardar)
-                        .addComponent(jb_eliminar))
-                    .addGap(188, 188, 188)))
+                    .addContainerGap(397, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,29 +210,25 @@ public class ViewCompras extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton jb_anterior;
-    private javax.swing.JButton jb_eliminar;
-    private javax.swing.JButton jb_guardar;
-    private javax.swing.JButton jb_modificar;
-    private javax.swing.JButton jb_nuevo;
-    private javax.swing.JButton jb_primero;
-    private javax.swing.JButton jb_siguiente;
-    private javax.swing.JButton jb_ultimo;
-    private javax.swing.JLabel jl_buscar;
-    private javax.swing.JLabel jl_cantidad;
-    private javax.swing.JLabel jl_compra_id;
-    private javax.swing.JLabel jl_detalle;
-    private javax.swing.JLabel jl_fecha;
-    private javax.swing.JLabel jl_precio;
-    private javax.swing.JLabel jl_total;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JButton jb_anterior;
+    public javax.swing.JButton jb_eliminar;
+    public javax.swing.JButton jb_guardar;
+    public javax.swing.JButton jb_modificar;
+    public javax.swing.JButton jb_nuevo;
+    public javax.swing.JButton jb_primero;
+    public javax.swing.JButton jb_siguiente;
+    public javax.swing.JButton jb_ultimo;
+    public javax.swing.JLabel jl_buscar;
+    public javax.swing.JLabel jl_compra_id;
+    public javax.swing.JLabel jl_fecha;
+    public javax.swing.JLabel jl_proveedor;
+    public javax.swing.JLabel jl_total;
     private javax.swing.JTable jt_detalle_compra;
-    private javax.swing.JTextField jtf_buscar;
-    private javax.swing.JTextField jtf_cantidad;
-    private javax.swing.JTextField jtf_compra;
-    private javax.swing.JTextField jtf_detalle;
-    private javax.swing.JTextField jtf_fecha;
-    private javax.swing.JTextField jtf_precio;
-    private javax.swing.JTextField jtf_total;
+    public javax.swing.JTextField jtf_buscar;
+    public javax.swing.JTextField jtf_compra;
+    public javax.swing.JTextField jtf_fecha;
+    public javax.swing.JTextField jtf_proveedor;
+    public javax.swing.JTextField jtf_total;
     // End of variables declaration//GEN-END:variables
 }

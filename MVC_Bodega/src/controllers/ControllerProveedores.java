@@ -10,8 +10,8 @@ public class ControllerProveedores {
     private ViewProveedores vProveedores;
     
 public ControllerProveedores(Object models[], Object views[], Object controllers[]){
-        this.mProveedores = (ModelProveedores)models[4];
-        this.vProveedores = (ViewProveedores)views[4];
+        this.mProveedores = (ModelProveedores)models[5];
+        this.vProveedores = (ViewProveedores)views[5];
         initView();
     }
     public void initView(){

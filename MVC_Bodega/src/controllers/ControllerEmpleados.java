@@ -10,8 +10,8 @@ public class ControllerEmpleados {
     private ViewEmpleados vEmpleados;
     
 public ControllerEmpleados(Object models[], Object views[], Object controllers[]){
-        this.mEmpleados = (ModelEmpleados)models[2];
-        this.vEmpleados = (ViewEmpleados)views[2];
+        this.mEmpleados = (ModelEmpleados)models[3];
+        this.vEmpleados = (ViewEmpleados)views[3];
         initView();
     }
     public void initView(){

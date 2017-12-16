@@ -11,8 +11,8 @@ public class ControllerClientes {
     private ViewClientes vClientes;
     
 public ControllerClientes(Object models[], Object views[], Object controllers[]){
-        this.mClientes = (ModelClientes)models[1];
-        this.vClientes = (ViewClientes)views[1];
+        this.mClientes = (ModelClientes)models[2];
+        this.vClientes = (ViewClientes)views[2];
         initView();
     }
     public void initView(){
