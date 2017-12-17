@@ -29,11 +29,9 @@ public class ModelPrincipal {
    
     public void Connect(){
         try {
-            Class.forName("org.postgresql.Driver");
-            sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","1234");
+            // Aquí habías colocado una línea de más que sólo se usa con el driver de PostgreSQL.
+            sql_connection = DriverManager.getConnection("jdbc:mysql://localhost/Bodega","root","1234");
             sql_st = sql_connection.createStatement();
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, ":(");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error 001: Conexion con la base de datos: " + e);
         }

@@ -34,7 +34,8 @@ public class Main {
         models[0] = mPrincipal;
         models[1] = mLogin;
         models[2] = mClientes;
-        models[4] = mEmpleados;
+        models[3] = mEmpleados; // Aquí estabas asignando dos veces el arreglo de models en su posición 4 en lugar de la posición 3. 
+        //Tenías escrito esto models[4] = mEmpleados.
         models[4] = mProductos;
         models[5] = mProveedores;
         

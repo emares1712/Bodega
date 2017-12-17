@@ -55,7 +55,7 @@ public class ModelLogin {
             model_principal.getSql_prepared_statement().setString(1, usuario);
             model_principal.EjecutarPS();
             model_principal.getSql_result_set().first();
-            if (model_principal.getSql_result_set().getString("Rol").equals("00")) {
+            if (model_principal.getSql_result_set().getString("Rol").equals("0")) {
                 tipo_usuario = "Admin";
             } 
             else {
