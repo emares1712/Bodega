@@ -109,6 +109,12 @@ public class ViewClientes extends javax.swing.JPanel {
         jl_whatsapp.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jl_whatsapp.setText("Whatsapp");
 
+        jtf_id_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_id_clienteActionPerformed(evt);
+            }
+        });
+
         jb_primero.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jb_primero.setText("|<");
 
@@ -179,11 +185,10 @@ public class ViewClientes extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jb_ultimo)))))
                 .addGap(74, 74, 74))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,14 +235,15 @@ public class ViewClientes extends javax.swing.JPanel {
                     .addComponent(jb_guardar)
                     .addComponent(jb_modificar)
                     .addComponent(jb_eliminar))
-                .addGap(179, 179, 179))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(327, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtf_id_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_id_clienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_id_clienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -258,7 +264,7 @@ public class ViewClientes extends javax.swing.JPanel {
     public javax.swing.JLabel jl_nombre;
     public javax.swing.JLabel jl_telefono;
     public javax.swing.JLabel jl_whatsapp;
-    private javax.swing.JTable jt_cliente;
+    public javax.swing.JTable jt_cliente;
     public javax.swing.JTextField jtf_buscar;
     public javax.swing.JTextField jtf_ciudad;
     public javax.swing.JTextField jtf_estado;

@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author ninte
@@ -27,6 +29,11 @@ public class ModelClientes {
     private String ciudad;
     private String telefono;
     private String whatsapp;
+
+    public TableModel getModelo() {
+        return modelo;
+    }
+    private TableModel modelo;
     
     private void Connect(){
         try{
@@ -63,15 +70,16 @@ public class ModelClientes {
     public void InsertarCliente(){
         try{
             Connect();
-            sql = "Insert into Clientes (ClienteID, Nombre_Cliente, Ciudad, Estado, Telefono, Whatsapp)Values (?,?,?,?,?,?);";
+            sql = "Insert into Cliente (ClienteID, Nombre_Cliente, Ciudad, Estado, Telefono, Whatsapp)Values (?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
-            sql_ps.setString(1, nombreCliente);
-            sql_ps.setString(2, ciudad);
-            sql_ps.setString(3, estado);
-            sql_ps.setString(4, telefono);
-            sql_ps.setString(5, whatsapp);
+            sql_ps.setString(1, idCliente);
+            sql_ps.setString(2, nombreCliente);
+            sql_ps.setString(3, ciudad);
+            sql_ps.setString(4, estado);
+            sql_ps.setString(5, telefono);
+            sql_ps.setString(6, whatsapp);
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 104: Insertando nuevo cliente: " + e);
         }
@@ -79,16 +87,16 @@ public class ModelClientes {
     public void ModificarCliente(){
         try{
             Connect();
-            sql = "Update Cliente Set Nombre_Cliente = (?), Ciudad (?), Estado (?), Telefono (?), Whatsapp (?) Where ClienteID = (?);";
+            sql = "Update Cliente Set Nombre_Cliente = (?), Ciudad = (?), Estado = (?), Telefono = (?), Whatsapp = (?) Where ClienteID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreCliente);
            sql_ps.setString(2, ciudad);
            sql_ps.setString(3, estado);
            sql_ps.setString(4, telefono);
            sql_ps.setString(5, whatsapp);
-           sql_ps.setInt(6, Integer.parseInt(idCliente));
+           sql_ps.setString(6, idCliente);
            sql_ps.executeUpdate();
-           sql_connection.close();
+           //sql_connection.close();
         }catch(SQLException e){
            JOptionPane.showMessageDialog(null, "Error 105: Modificar Cliente: " + e);
         }
@@ -97,10 +105,11 @@ public class ModelClientes {
     public void EliminarCliente(){
         try{
             Connect();
-            sql = "DELETE FROM Cliente Where ClienteID = (?);";
-            sql_ps.setInt(1, Integer.parseInt(idCliente));
+            sql = "DELETE FROM Cliente Where ClienteID = ?;";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1, idCliente);
             sql_ps.executeUpdate();
-            sql_connection.close();
+            //sql_connection.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error 106: Eliminar Cliente: " + e);
         }
@@ -148,6 +157,31 @@ public class ModelClientes {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error 204: Mover al primer registro: " + e);
+        }
+    }
+    public void ConsultaTabla(){
+        try{
+            sql =  "Select * from Cliente";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 301: Error al consultar Cliente: " + e);
+        }
+    }
+    public void BuscarCliente(String busca){
+        try{
+            sql = "Select * from Cliente Where Nombre_Cliente Like ? or Ciudad Like ? or Estado Like ? or ClienteID Like ?";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1, busca+"%");
+            sql_ps.setString(2, busca+"%");
+            sql_ps.setString(3, busca+"%");
+            sql_ps.setString(4, busca+"%");
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 401: Error al buscar Cliente: " + e);
         }
     }
     

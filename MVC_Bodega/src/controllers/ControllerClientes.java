@@ -1,12 +1,16 @@
 
 package controllers;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import models.ModelClientes;
 import views.ViewClientes;
 /**
  *
  * @author ninte
  */
-public class ControllerClientes {
+public class ControllerClientes implements KeyListener{
     private ModelClientes mClientes;
     private ViewClientes vClientes;
     
@@ -21,9 +25,14 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
         //mClientes.MoverPrimero();
         mClientes.AsignarCliente();
         obtenerValor();
-        vClientes.jtf_id_cliente.setEnabled(false);
+        ActualizarTabla();
+    }
+    public void ActualizarTabla(){
+        mClientes.ConsultaTabla();
+        vClientes.jt_cliente.setModel(mClientes.getModelo());
     }
     public void Agregar(){
+        vClientes.jtf_buscar.addKeyListener(this);
         vClientes.jb_anterior.addActionListener(e->jbtn_anterior_Click());
         vClientes.jb_eliminar.addActionListener(e->jbtn_eliminar_Click());
         vClientes.jb_guardar.addActionListener(e->jbtn_guardar_Click());
@@ -64,14 +73,17 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
     public void jbtn_eliminar_Click(){
         editarValor();
         mClientes.EliminarCliente();
+        ActualizarTabla();
     }
     public void jbtn_guardar_Click(){
         editarValor();
-        mClientes.ModificarCliente();
+        mClientes.InsertarCliente();
+        ActualizarTabla();
     }
     public void jbtn_modificar_Click(){
         editarValor();
         mClientes.ModificarCliente();
+        ActualizarTabla();
     }
     public void jbtn_nuevo_Click(){
         Nuevo_Cliente();
@@ -88,5 +100,21 @@ public ControllerClientes(Object models[], Object views[], Object controllers[])
     public void jbtn_ultimo_Click(){
         mClientes.MoverUltimo();
         obtenerValor();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+         //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        mClientes.BuscarCliente("" + vClientes.jtf_buscar.getText());
+        vClientes.jt_cliente.setModel(mClientes.getModelo());//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+         //To change body of generated methods, choose Tools | Templates.
     }
 }
