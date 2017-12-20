@@ -22,6 +22,7 @@ public ControllerProveedores(Object models[], Object views[], Object controllers
         //mClientes.MoverPrimero();
         mProveedores.AsignarProveedor();
         obtenerValor();
+        ActualizarTabla();
     }
     
     public void ActualizarTabla(){
@@ -61,7 +62,7 @@ public ControllerProveedores(Object models[], Object views[], Object controllers
     public void NuevoEmpleado(){
         vProveedores.jtf_id.setText("");
         vProveedores.jtf_nombre.setText("");
-        vProveedores.jtf_colonia.setText("");
+        vProveedores.jtf_ciudad.setText("");
         vProveedores.jtf_colonia.setText("");
         vProveedores.jtf_calle.setText("");
         vProveedores.jtf_telefono.setText("");

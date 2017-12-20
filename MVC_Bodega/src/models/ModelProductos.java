@@ -73,14 +73,14 @@ public class ModelProductos {
     public void InsertarProducto(){
         try{
             Connect();
-            sql = "Insert into Productos (ProductosID, Nombre_Producto, Descripcion, Cantidad_Existente, Precio_Compra, Precio_Venta)Values (?,?,?,?,?,?);";
+            sql = "Insert into Productos (ProductosID, Nombre_Producto, Descripcion, Cantidad_Existente, Precio_compra, Precio_Venta)Values (?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
             sql_ps.setString(1, idProducto);
             sql_ps.setString(2, nombreProducto);
             sql_ps.setString(3, descripcion);
-            sql_ps.setString(4, cantidadExistencias);
-            sql_ps.setString(5, precioCompra);
-            sql_ps.setString(6, precioVenta);
+            sql_ps.setInt(4, Integer.parseInt(cantidadExistencias));
+            sql_ps.setInt(5, Integer.parseInt(precioCompra));
+            sql_ps.setInt(6, Integer.parseInt(precioVenta));
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){
@@ -90,13 +90,13 @@ public class ModelProductos {
     public void ModificarProducto(){
         try{
             Connect();
-            sql = "Update Productos Set Nombre_Producto = (?), Descripcion (?), Cantidad_Existente (?), Precio_Compra (?), Precio_Venta (?) Where ProductosID = (?);";
+            sql = "Update Productos Set Nombre_Producto = (?), Descripcion = (?), Cantidad_Existente = (?), Precio_compra = (?), Precio_Venta = (?) Where ProductosID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreProducto);
            sql_ps.setString(2, descripcion);
-           sql_ps.setString(3, cantidadExistencias);
-           sql_ps.setString(4, precioCompra);
-           sql_ps.setString(5, precioVenta);
+           sql_ps.setInt(3, Integer.parseInt(cantidadExistencias));
+           sql_ps.setInt(4, Integer.parseInt(precioCompra));
+           sql_ps.setInt(5, Integer.parseInt(precioVenta));
            sql_ps.setString(6, idProducto);
            sql_ps.executeUpdate();
            //sql_connection.close();
@@ -108,7 +108,8 @@ public class ModelProductos {
     public void EliminarProducto(){
         try{
             Connect();
-            sql = "DELETE FROM Productos Where ProductosID = (?);";
+            sql = "DELETE FROM Productos Where ProductosID = ?;";
+            sql_ps = sql_connection.prepareStatement(sql);
             sql_ps.setString(1, idProducto);
             sql_ps.executeUpdate();
             //sql_connection.close();

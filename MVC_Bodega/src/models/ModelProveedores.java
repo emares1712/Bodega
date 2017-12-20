@@ -92,7 +92,7 @@ public class ModelProveedores {
     public void ModificarProveedor(){
         try{
             Connect();
-            sql = "Update Proveedor Set Nombre_Proveedor = (?), Ciudad (?), Colonia (?), Calle (?), Telefono (?), Whatsapp (?) Where ProveedoresID = (?);";
+            sql = "Update Proveedores Set Nombre_Proveedor = (?), Ciudad = (?), Colonia = (?), Calle = (?), Telefono = (?), Whatsapp = (?) Where ProveedoresID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreProveedor);
            sql_ps.setString(2, ciudad);
@@ -111,8 +111,9 @@ public class ModelProveedores {
     public void EliminarProveedor(){
         try{
             Connect();
-            sql = "DELETE FROM Proveedor Where ProveedoresID = (?);";
-            sql_ps.setInt(1, Integer.parseInt(idProveedor));
+            sql = "DELETE FROM Proveedores Where ProveedoresID = ?;";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1, idProveedor);
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){
