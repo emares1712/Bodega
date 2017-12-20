@@ -20,7 +20,7 @@ public ControllerEmpleados(Object models[], Object views[], Object controllers[]
         //mClientes.MoverPrimero();
         mEmpleados.AsignarEmpleado();
         obtenerValor();
-        vEmpleados.jtf_id.setEnabled(false);
+        
     }
     public void Agregar(){
         vEmpleados.jb_anterior.addActionListener(e->jbtn_anterior_Click());
@@ -63,7 +63,7 @@ public ControllerEmpleados(Object models[], Object views[], Object controllers[]
     }
     public void jbtn_guardar_Click(){
         editarValor();
-        mEmpleados.ModificarEmpleado();
+        mEmpleados.InsertarEmpleado();
     }
     public void jbtn_modificar_Click(){
         editarValor();

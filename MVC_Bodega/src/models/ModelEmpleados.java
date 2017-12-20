@@ -65,12 +65,13 @@ public class ModelEmpleados {
     public void InsertarEmpleado(){
         try{
             Connect();
-            sql = "Insert into Empleado (EmpleadoID, Nombre_Empleaso, Colonia, Calle, Telefono)Values (?,?,?,?,?);";
+            sql = "Insert into Empleado (EmpleadoID, Nombre_Empleado, Colonia, Calle, Telefono)Values (?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
-            sql_ps.setString(1, nombreEmpleado);
-            sql_ps.setString(2, colonia);
-            sql_ps.setString(3, calle);
-            sql_ps.setString(4, telefono);
+            sql_ps.setString(1, idEmpleado);
+            sql_ps.setString(2, nombreEmpleado);
+            sql_ps.setString(3, colonia);
+            sql_ps.setString(4, calle);
+            sql_ps.setString(5, telefono);
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){
@@ -80,13 +81,13 @@ public class ModelEmpleados {
     public void ModificarEmpleado(){
         try{
             Connect();
-            sql = "Update Empleado Set Nombre_Empleado = (?), Colonia (?), Calle (?), Telefono (?) Where EmpleadoID = (?);";
+            sql = "Update Empleado Set Nombre_Empleado = (?), Colonia = (?), Calle = (?), Telefono =(?) Where EmpleadoID = (?);";
             sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreEmpleado);
            sql_ps.setString(2, colonia);
            sql_ps.setString(3, calle);
            sql_ps.setString(4, telefono);
-           sql_ps.setInt(6, Integer.parseInt(idEmpleado));
+           sql_ps.setString(5, idEmpleado);
            sql_ps.executeUpdate();
            //sql_connection.close();
         }catch(SQLException e){
@@ -97,8 +98,9 @@ public class ModelEmpleados {
     public void EliminarEmpleado(){
         try{
             Connect();
-            sql = "DELETE FROM Empleado Where EmpleadoID = (?);";
-            sql_ps.setInt(1, Integer.parseInt(idEmpleado));
+            sql = "DELETE FROM Empleado Where EmpleadoID = ?;";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1,idEmpleado);
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){

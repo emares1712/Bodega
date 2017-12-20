@@ -92,8 +92,8 @@ public class ModelProveedores {
     public void ModificarProveedor(){
         try{
             Connect();
-            sql = "Update Proveedores Set Nombre_Proveedor = (?), Ciudad = (?), Colonia = (?), Calle = (?), Telefono = (?), Whatsapp = (?) Where ProveedoresID = (?);";
-            sql_ps = sql_connection.prepareStatement(sql);
+           sql = "Update Proveedores Set Nombre_Proveedor = (?), Ciudad = (?), Colonia = (?), Calle = (?), Telefono = (?), Whatsapp = (?) Where ProveedoresID = (?);";
+           sql_ps = sql_connection.prepareStatement(sql);
            sql_ps.setString(1, nombreProveedor);
            sql_ps.setString(2, ciudad);
            sql_ps.setString(3, colonia);
