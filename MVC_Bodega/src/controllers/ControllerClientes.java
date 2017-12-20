@@ -2,8 +2,6 @@
 package controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import models.ModelClientes;
 import views.ViewClientes;
 /**

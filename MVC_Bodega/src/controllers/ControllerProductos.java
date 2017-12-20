@@ -1,11 +1,13 @@
 package controllers;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import models.ModelProductos;
 import views.ViewProductos;
 /**
  *
  * @author ninte
  */
-public class ControllerProductos {
+public class ControllerProductos implements KeyListener{
     private ModelProductos mProductos;
     private ViewProductos vProductos;
     
@@ -20,9 +22,15 @@ public ControllerProductos(Object models[], Object views[], Object controllers[]
         //mProductos.MoverPrimero();
         mProductos.AsignarProducto();
         obtenerValor();
-        vProductos.jtf_id_producto.setEnabled(false);
+        ActualizarTabla();
+    }
+    
+    public void ActualizarTabla(){
+        mProductos.ConsultaTabla();
+        vProductos.jt_productos.setModel(mProductos.getModelo());
     }
     public void Agregar(){
+        vProductos.jtf_buscar.addKeyListener(this);
         vProductos.jb_anterior.addActionListener(e->jbtn_anterior_Click());
         vProductos.jb_eliminar.addActionListener(e->jbtn_eliminar_Click());
         vProductos.jb_guardar.addActionListener(e->jbtn_guardar_Click());
@@ -63,14 +71,17 @@ public ControllerProductos(Object models[], Object views[], Object controllers[]
     public void jbtn_eliminar_Click(){
         editarValor();
         mProductos.EliminarProducto();
+        ActualizarTabla();
     }
     public void jbtn_guardar_Click(){
         editarValor();
-        mProductos.ModificarProducto();
+        mProductos.InsertarProducto();
+        ActualizarTabla();
     }
     public void jbtn_modificar_Click(){
         editarValor();
         mProductos.ModificarProducto();
+        ActualizarTabla();
     }
     public void jbtn_nuevo_Click(){
         NuevoEmpleado();
@@ -87,5 +98,21 @@ public ControllerProductos(Object models[], Object views[], Object controllers[]
     public void jbtn_ultimo_Click(){
         mProductos.MoverUltimo();
         obtenerValor();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        mProductos.BuscarProducto(""+ vProductos.jtf_buscar.getText());
+        vProductos.jt_productos.setModel(mProductos.getModelo());//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+         //To change body of generated methods, choose Tools | Templates.
     }
 }

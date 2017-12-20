@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -30,6 +32,11 @@ public class ModelProductos {
     private String cantidadExistencias;
     private String precioCompra;
     private String precioVenta;
+    private TableModel modelo;
+    
+    public TableModel getModelo(){
+        return modelo;
+    }
     
     private void Connect(){
         try{
@@ -68,11 +75,12 @@ public class ModelProductos {
             Connect();
             sql = "Insert into Productos (ProductosID, Nombre_Producto, Descripcion, Cantidad_Existente, Precio_Compra, Precio_Venta)Values (?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
-            sql_ps.setString(1, nombreProducto);
-            sql_ps.setString(2, descripcion);
-            sql_ps.setString(3, cantidadExistencias);
-            sql_ps.setString(4, precioCompra);
-            sql_ps.setString(5, precioVenta);
+            sql_ps.setString(1, idProducto);
+            sql_ps.setString(2, nombreProducto);
+            sql_ps.setString(3, descripcion);
+            sql_ps.setString(4, cantidadExistencias);
+            sql_ps.setString(5, precioCompra);
+            sql_ps.setString(6, precioVenta);
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){
@@ -89,7 +97,7 @@ public class ModelProductos {
            sql_ps.setString(3, cantidadExistencias);
            sql_ps.setString(4, precioCompra);
            sql_ps.setString(5, precioVenta);
-           sql_ps.setInt(6, Integer.parseInt(idProducto));
+           sql_ps.setString(6, idProducto);
            sql_ps.executeUpdate();
            //sql_connection.close();
         }catch(SQLException e){
@@ -101,7 +109,7 @@ public class ModelProductos {
         try{
             Connect();
             sql = "DELETE FROM Productos Where ProductosID = (?);";
-            sql_ps.setInt(1, Integer.parseInt(idProducto));
+            sql_ps.setString(1, idProducto);
             sql_ps.executeUpdate();
             //sql_connection.close();
         }catch(SQLException e){
@@ -153,6 +161,32 @@ public class ModelProductos {
             JOptionPane.showMessageDialog(null, "Error 212: Mover al primer registro: " + e);
         }
     }
+    public void ConsultaTabla(){
+        try{
+            sql =  "Select * from Productos";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 303: Error al consultar Producto: " + e);
+        }
+    }
+    
+    public void BuscarProducto(String busca){
+        try{
+            sql = "Select * from Productos Where Nombre_Producto Like ? or Descripcion Like ? or ClienteID Like ?";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1, busca+"%");
+            sql_ps.setString(2, busca+"%");
+            sql_ps.setString(3, busca+"%");
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 403: Error al buscar Producto: " + e);
+        }
+    }
+    
     public String getIdProducto() {
         return idProducto;
     }

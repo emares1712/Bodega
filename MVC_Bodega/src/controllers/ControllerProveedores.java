@@ -1,11 +1,13 @@
 package controllers;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import models.ModelProveedores;
 import views.ViewProveedores;
 /**
  *
  * @author ninte
  */
-public class ControllerProveedores {
+public class ControllerProveedores implements KeyListener{
     private ModelProveedores mProveedores;
     private ViewProveedores vProveedores;
     
@@ -20,9 +22,15 @@ public ControllerProveedores(Object models[], Object views[], Object controllers
         //mClientes.MoverPrimero();
         mProveedores.AsignarProveedor();
         obtenerValor();
-        vProveedores.jtf_id.setEnabled(false);
     }
+    
+    public void ActualizarTabla(){
+        mProveedores.ConsultaTabla();
+        vProveedores.jt_proveedor.setModel(mProveedores.getModelo());
+    }
+    
     public void Agregar(){
+        vProveedores.jtf_buscar.addKeyListener(this);
         vProveedores.jb_atras.addActionListener(e->jbtn_anterior_Click());
         vProveedores.jb_eliminar.addActionListener(e->jbtn_eliminar_Click());
         vProveedores.jb_guardar.addActionListener(e->jbtn_guardar_Click());
@@ -66,16 +74,17 @@ public ControllerProveedores(Object models[], Object views[], Object controllers
     public void jbtn_eliminar_Click(){
         editarValor();
         mProveedores.EliminarProveedor();
+        ActualizarTabla();
     }
     public void jbtn_guardar_Click(){
         editarValor();
-        mProveedores.ModificarProveedor();
-        
+        mProveedores.InsertarProveedor();
+        ActualizarTabla();
     }
     public void jbtn_modificar_Click(){
         editarValor();
         mProveedores.ModificarProveedor();
-        
+        ActualizarTabla();
     }
     public void jbtn_nuevo_Click(){
         NuevoEmpleado();
@@ -92,5 +101,21 @@ public ControllerProveedores(Object models[], Object views[], Object controllers
     public void jbtn_ultimo_Click(){
         mProveedores.MoverUltimo();
         obtenerValor();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        mProveedores.BuscarProveedor(""+vProveedores.jtf_buscar.getText());
+        vProveedores.jt_proveedor.setModel(mProveedores.getModelo());//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+         //To change body of generated methods, choose Tools | Templates.
     }
 }

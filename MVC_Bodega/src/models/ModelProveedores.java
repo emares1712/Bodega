@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -31,6 +33,11 @@ public class ModelProveedores {
     private String calle;
     private String telefono;
     private String whatsapp;
+    private TableModel modelo;
+    
+    public TableModel getModelo(){
+        return modelo;
+    }
     
     private void Connect(){
         try{
@@ -69,12 +76,13 @@ public class ModelProveedores {
             Connect();
             sql = "Insert into Proveedores (ProveedoresID, Nombre_Proveedor, Ciudad, Colonia, Calle, Telefono, Whatsapp)Values (?,?,?,?,?,?,?);";
             sql_ps = sql_connection.prepareStatement(sql);
-            sql_ps.setString(1, nombreProveedor);
-            sql_ps.setString(2, ciudad);
-            sql_ps.setString(3, colonia);
-            sql_ps.setString(4, calle);
-            sql_ps.setString(5, telefono);
-            sql_ps.setString(6, whatsapp);
+            sql_ps.setString(1, idProveedor);
+            sql_ps.setString(2, nombreProveedor);
+            sql_ps.setString(3, ciudad);
+            sql_ps.setString(4, colonia);
+            sql_ps.setString(5, calle);
+            sql_ps.setString(6, telefono);
+            sql_ps.setString(7, whatsapp);
             sql_ps.executeUpdate();
            // sql_connection.close();
         }catch(SQLException e){
@@ -92,7 +100,7 @@ public class ModelProveedores {
            sql_ps.setString(4, calle);
            sql_ps.setString(5, telefono);
            sql_ps.setString(6, whatsapp);
-           sql_ps.setInt(7, Integer.parseInt(idProveedor));
+           sql_ps.setString(7, idProveedor);
            sql_ps.executeUpdate();
            //sql_connection.close();
         }catch(SQLException e){
@@ -153,6 +161,34 @@ public class ModelProveedores {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error 216: Mover al primer registro: " + e);
+        }
+    }
+    
+    public void ConsultaTabla(){
+        try{
+            sql =  "Select * from Proveedores";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 304: Error al consultar Proveedor: " + e);
+        }
+    }
+    
+    public void BuscarProveedor(String busca){
+        try{
+            sql = "Select * from Proveedores Where Nombre_Proveedor Like ? or Ciudad Like ? or Colonia Like ? or Calle Like ? or ProveedoresID Like ?";
+            sql_ps = sql_connection.prepareStatement(sql);
+            sql_ps.setString(1, busca+"%");
+            sql_ps.setString(2, busca+"%");
+            sql_ps.setString(3, busca+"%");
+            sql_ps.setString(4, busca+"%");
+            sql_ps.setString(5, busca+"%");
+            sql_rs = sql_ps.executeQuery();
+            modelo = DbUtils.resultSetToTableModel(sql_rs);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error 404: Error al buscar Proveedor: " + e);
         }
     }
     
